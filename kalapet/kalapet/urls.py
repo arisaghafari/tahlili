@@ -14,8 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.contrib.auth import views as auth_views
+from django.conf.urls import url
+from forosh import views as forosh_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', forosh_views.home, name = 'home'),
+    path('login/', auth_views.LoginView, {'template_name': 'login.html'}, name='login'),
+    path('logout/', auth_views.LogoutView, {'next_page': 'login'}, name='logout'),
+    url('signup/', forosh_views.signup, name='signup'),
 ]
