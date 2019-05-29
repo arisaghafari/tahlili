@@ -9,7 +9,7 @@ class Product(models.Model):
     expiration = models.DateField()
 
     def __str__(self):
-        return "{}-{}".format(self.name, self.cost)
+        return "{} - {}".format(self.name, self.cost)
 
 class Supplier(models.Model):
     name = models.CharField(max_length = 200)
