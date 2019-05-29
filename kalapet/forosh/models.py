@@ -4,6 +4,10 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 # Create your models here.
+class Token(models.Model):
+    user = models.OneToOneField(User, on_delete = models.CASCADE)
+    token = models.CharField(max_length = 48)
+
 class Product(models.Model):
     name = models.CharField(max_length = 200)
     cost = models.IntegerField()
