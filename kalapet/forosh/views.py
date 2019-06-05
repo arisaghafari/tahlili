@@ -4,6 +4,8 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from forosh.forms import SignUpForm
 from django.utils import timezone
+from django.views.generic import ListView
+from .models import Advertisment
 
 @login_required
 def home(request):
@@ -26,3 +28,7 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
+
+class AD(ListView):
+    model = Advertisment
+    template_name = 'AD.html'
