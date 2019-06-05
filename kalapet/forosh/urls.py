@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import home, signup, AD
+from .views import home, signup, AD, CreateADView
 
 urlpatterns = [
     path('', home, name='home'),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView, {'next_page': 'login'}, name='logout'),
     path('signup/', signup, name='signup'),
     path('AD/', AD.as_view(), name='advertisment'),
+    path('ADForm/', CreateADView.as_view(), name='add_AD'),
 ]

@@ -4,7 +4,6 @@
 <ul>
   {% for advertisment in object_list %}
     <h2>{{ advertisment.title }}</h2>
-    <!--<img src="{{ advertisment.cover.url}}" alt="{{ advertisment.title }}">-->
     <img src="{{ advertisment.image.url}}" alt="{{ advertisment.title }}">
   {% endfor %}
 </ul>
