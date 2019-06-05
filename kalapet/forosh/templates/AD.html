@@ -2,9 +2,10 @@
 {% block content %}
 <h1>Django Image Uploading</h1>
 <ul>
-  {% for post in object_list %}
-    <h2>{{ post.title }}</h2>
-    <img src="{{ post.cover.url}}" alt="{{ post.title }}">
+  {% for advertisment in object_list %}
+    <h2>{{ advertisment.title }}</h2>
+    <!--<img src="{{ advertisment.cover.url}}" alt="{{ advertisment.title }}">-->
+    <img src="{{ advertisment.image}}" alt="{{ advertisment.title }}">
   {% endfor %}
 </ul>
 {% endblock %}
