@@ -3,10 +3,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from forosh.forms import SignUpForm
+from django.utils import timezone
 
 @login_required
 def home(request):
-    return render(request, 'home.html')
+    time = timezone.now()
+    return render(request, 'home.html', {'time': time})
 
 
 def signup(request):
