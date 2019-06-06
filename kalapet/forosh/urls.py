@@ -1,12 +1,13 @@
 from django.urls import path
-from django.contrib.auth import views as auth_views
-from .views import home, signup, AD, CreateADView
+from django.contrib.auth.views import LoginView , LogoutView
+from .views import *
 
 urlpatterns = [
     path('', home, name='home'),
-    path('login/', auth_views.LoginView, {'template_name': 'login.html'}, name='login'),
-    path('logout/', auth_views.LogoutView, {'next_page': 'login'}, name='logout'),
+    path('login/', LoginView.as_view(template_name= 'login.html'), name='login'),
+    path('logout/', LogoutView.as_view(next_page= 'login'), name='logout'),
     path('signup/', signup, name='signup'),
     path('AD/', AD.as_view(), name='advertisment'),
-    path('ADForm/', CreateADView.as_view(), name='add_AD'),
+    path('ADForm/', CreateAD, name='add_AD'),
+    path('success', success, name = 'success')
 ]
