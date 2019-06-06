@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
 from forosh.forms import SignUpForm
 from django.utils import timezone
 from django.views.generic import ListView
-from .models import Advertisment
+from .forms import *
+from django.http import HttpResponse
+
 
 @login_required
 def home(request):
@@ -32,3 +33,17 @@ def signup(request):
 class AD(ListView):
     model = Advertisment
     template_name = 'AD.html'
+
+def CreateAD(request):
+    if request.method == 'POST':
+        form = ADForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return redirect('success')
+    else:
+        form = ADForm()
+    return render(request, 'ADForm.html', {'form': form})
+
+def success(request):
+    return HttpResponse('successfuly uploaded')
